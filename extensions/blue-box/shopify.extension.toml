@@ -1,0 +1,6 @@
+name = "blue-box"
+type = "theme"
+uid = "a0a12b2b-5efb-0d19-3251-44f1605e60312a1fd43c"
+[build]
+command = "npm run build"
+path = "assets"

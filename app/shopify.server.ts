@@ -49,6 +49,7 @@ const shopify = shopifyApp({
             console.log('webhookResponse>>> ', webhookResponse)
         },
     },
+
 });
 
 export default shopify;

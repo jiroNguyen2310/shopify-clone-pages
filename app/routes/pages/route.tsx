@@ -24,7 +24,10 @@ export default function App() {
         <Link to="/pages" rel="home">
           Clone Pages
         </Link>
+        <Link to="/pages/editor">Editor</Link>
         <Link to="/pages/new">Add Pages</Link>
+        <Link to="/pages/tree">Tree Node</Link>
+        <Link to="/pages/box">Box Manager</Link>
         <Link to="/pages/products">Products GA</Link>
         <Link to="/pages/theme">Theme Mongo</Link>
       </NavMenu>

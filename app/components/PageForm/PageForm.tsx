@@ -182,8 +182,8 @@ export default function PageForm({
         console.log('idPageNum', idPageNum)
 
         // URL preview qua App Proxy
+        // const previewUrl = `https://${shopDomain}/a/preview/${encodeURIComponent( as string)}`;
         const previewUrl = `https://${shopDomain}/a/preview/${encodeURIComponent(idPageNum as string)}`;
-        // const previewUrl = `https://${shopDomain}/a/pf_preview/${pageId}`;
 
         console.log("previewUrl>> ", previewUrl);
 

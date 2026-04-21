@@ -1,0 +1,29 @@
+<!-- extensions/blue-box/blocks/blue-box-block.liquid -->
+<div id="blue-box"
+     data-shop="{{ shop.domain | escape }}"
+     data-shop-id="{{ shop.id | escape }}">
+</div>
+
+<script id="blue-init" type="application/json">
+  {
+    "shop": "{{ shop.domain | escape }}",
+    "permanent_domain": "{{ shop.permanent_domain | escape }}"
+  }
+</script>
+
+<script src="{{ 'blue-box.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Blue Box Builder",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Block title",
+      "default": "Blue Box Builder"
+    }
+  ]
+}
+{% endschema %}

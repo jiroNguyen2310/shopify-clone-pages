@@ -3,7 +3,8 @@
     "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "test-mongodb.js"
+    "test-mongodb.js",
+    "extensions/theme-extension/assets/main.js"
   ],
   "compilerOptions": {
     "lib": [

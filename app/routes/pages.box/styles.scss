@@ -1,0 +1,10 @@
+.two-column {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    height: 100vh;
+}
+
+.flexElement {
+    display: flex;
+    flex-direction: column;
+}

@@ -9,6 +9,7 @@ import {
   Layout,
   Loading,
   Modal,
+  ButtonGroup,
 } from "@shopify/polaris";
 import { authenticate } from "../../shopify.server";
 import { PageTable } from "app/components/PageTable/PageTable";
@@ -110,8 +111,8 @@ export default function Index() {
   const { pages } = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   const [toast, setToast] = useState<{ content: string; error?: boolean } | null>(null);
+  const [isModal, setIsModal] = useState(true)
   const skeleton = useNavigationSkeleton();
-
   if (skeleton) return skeleton;
 
   const pageProps =
@@ -119,36 +120,39 @@ export default function Index() {
     && { fullWidth: true }
 
   return (
+    <>
 
-    <Frame>
-      <Page
-        {...pageProps}
-        title='Pages'
-        primaryAction={pages && pages.length !== 0 && <Button variant="primary" onClick={() => navigate('/pages/new')}> Add page</Button>}
-      >
-        <Layout>
-          <Layout.Section>
-            {pages && pages.length === 0
-              ? <PageEmpty />
-              :
-              <PageTable listPages={pages} setToast={(content: string) => setToast({ content })}
-              />
-            }
-          </Layout.Section>
-        </Layout>
-        <FooterHelpPages />
-      </Page>
+      <Frame>
+        <Page
+          {...pageProps}
+          title='Pages'
+          primaryAction={pages && pages.length !== 0 && <Button variant="primary" onClick={() => navigate('/pages/new')}> Add page</Button>}
+          secondaryActions={pages && pages.length !== 0 && <Button variant="primary" onClick={() => navigate('/pages/new')}> Add page</Button>}
+        >
+          <Layout>
+            <Layout.Section>
+              {pages && pages.length === 0
+                ? <PageEmpty />
+                :
+                <PageTable listPages={pages} setToast={(content: string) => setToast({ content })}
+                />
+              }
+            </Layout.Section>
+          </Layout>
+          <FooterHelpPages />
+        </Page>
 
+        {toast && (
+          <Toast
+            content={toast.content}
+            error={toast.error}
+            onDismiss={() => setToast(null)}
+          />
+        )}
 
-      {toast && (
-        <Toast
-          content={toast.content}
-          error={toast.error}
-          onDismiss={() => setToast(null)}
-        />
-      )}
+      </Frame>
+    </>
 
-    </Frame>
 
   );
 }

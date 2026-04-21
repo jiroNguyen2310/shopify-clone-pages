@@ -19,7 +19,6 @@ import { connectDb } from "app/db.server";
 import { ShopTheme } from "app/models/Theme";
 import { useNavigationSkeleton } from "app/hooks/useNavigationSkeleton";
 
-
 export const loader = async ({ request }: LoaderFunctionArgs) => {
     const { session } = await authenticate.admin(request);
     await connectDb();
@@ -118,7 +117,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function ThemeCrud() {
     const { themes } = useLoaderData<typeof loader>();
-    const actionData = useActionData<{ success?: string; error?: string }>();
     const navigation = useNavigation();
     const [themeName, setThemeName] = useState('');
     const [primaryColor, setPrimaryColor] = useState('#2364aa');
@@ -143,18 +141,6 @@ export default function ThemeCrud() {
         fd.append("themeId", id);
         fetcher.submit(fd, { method: "post" });
     };
-
-
-
-    // useEffect(() => {
-    //     if (actionData?.success) {
-    //         console.log('actionData?.success>> ', actionData)
-    //         setToast({ content: actionData.success });
-    //         setThemeName("");
-    //     } else if (actionData?.error) {
-    //         setToast({ content: actionData.error, error: true });
-    //     }
-    // }, [actionData]);
 
     useEffect(() => {
         console.log('LOADER', themes)
